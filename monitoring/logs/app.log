@@ -1,1 +1,612 @@
+2026-06-04 21:31:34 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-04 21:31:34 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-04 21:31:34 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-04 21:31:34 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Financial Portfolio Data Pipeline
+2026-06-04 21:31:34 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-04 21:31:34 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Create required directories
+2026-06-04 21:31:35 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=create_required_directories | status=success | time=0.0363s | memory=87.95MB
+2026-06-04 21:31:35 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Create required directories
+2026-06-04 21:31:35 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Load raw data
+2026-06-04 21:31:35 - financial_portfolio - ERROR - data_loader.py:95 - load_csv() - Failed to load CSV file from E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv: Missing column provided to 'parse_dates': 'date'
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
+2026-06-04 21:31:35 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_data | status=failed | time=0.0978s | memory=88.86MB
+2026-06-04 21:31:35 - financial_portfolio - ERROR - performance_tracker.py:567 - track_step() - Step failed: load_raw_data | Error: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
 
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\monitoring\performance_tracker.py", line 545, in track_step
+    yield
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 124, in load_raw_data
+    raw_data = self.loader.load_raw_data()
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 160, in load_raw_data
+    return self.load_csv(get_raw_data_path(), parse_dates=["date"])
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 101, in load_csv
+    raise DataError(
+    ...<2 lines>...
+    ) from error
+src.utils.exception_handler.DataError: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+2026-06-04 21:31:35 - financial_portfolio - ERROR - logger.py:362 - log_step_error() - Error in step 'Data pipeline': [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 278, in run
+    raw_data = self.load_raw_data()
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 124, in load_raw_data
+    raw_data = self.loader.load_raw_data()
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 160, in load_raw_data
+    return self.load_csv(get_raw_data_path(), parse_dates=["date"])
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 101, in load_csv
+    raise DataError(
+    ...<2 lines>...
+    ) from error
+src.utils.exception_handler.DataError: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+2026-06-04 21:31:35 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-04 21:31:35 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-07 20:25:25 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-07 20:25:25 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Financial Portfolio Data Pipeline
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Create required directories
+2026-06-07 20:25:25 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=create_required_directories | status=success | time=0.0380s | memory=88.14MB
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Create required directories
+2026-06-07 20:25:25 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Load raw data
+2026-06-07 20:25:25 - financial_portfolio - ERROR - data_loader.py:95 - load_csv() - Failed to load CSV file from E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv: Missing column provided to 'parse_dates': 'date'
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
+2026-06-07 20:25:25 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_data | status=failed | time=0.1097s | memory=88.61MB
+2026-06-07 20:25:25 - financial_portfolio - ERROR - performance_tracker.py:567 - track_step() - Step failed: load_raw_data | Error: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\monitoring\performance_tracker.py", line 545, in track_step
+    yield
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 124, in load_raw_data
+    raw_data = self.loader.load_raw_data()
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 160, in load_raw_data
+    return self.load_csv(get_raw_data_path(), parse_dates=["date"])
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 101, in load_csv
+    raise DataError(
+    ...<2 lines>...
+    ) from error
+src.utils.exception_handler.DataError: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+2026-06-07 20:25:25 - financial_portfolio - ERROR - logger.py:362 - log_step_error() - Error in step 'Data pipeline': [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 76, in load_csv
+    dataframe = pd.read_csv(file_path, parse_dates=parse_dates)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 152, in __init__
+    validate_parse_dates_presence(self.parse_dates, self.names)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\io\parsers\base_parser.py", line 917, in validate_parse_dates_presence
+    raise ValueError(f"Missing column provided to 'parse_dates': '{missing_cols}'")
+ValueError: Missing column provided to 'parse_dates': 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 278, in run
+    raw_data = self.load_raw_data()
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 124, in load_raw_data
+    raw_data = self.loader.load_raw_data()
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 160, in load_raw_data
+    return self.load_csv(get_raw_data_path(), parse_dates=["date"])
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_loader.py", line 101, in load_csv
+    raise DataError(
+    ...<2 lines>...
+    ) from error
+src.utils.exception_handler.DataError: [DATA_ERROR] Failed to load CSV file. | Details: {'file_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\data\\raw\\financial_portfolio_data.csv", 'error': "Missing column provided to 'parse_dates': 'date'"}
+2026-06-07 20:25:25 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-07 20:25:25 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-07 20:30:52 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-07 20:30:52 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Financial Portfolio Data Pipeline
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Create required directories
+2026-06-07 20:30:53 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=create_required_directories | status=success | time=0.0334s | memory=88.25MB
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Create required directories
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Load raw data
+2026-06-07 20:30:53 - financial_portfolio - INFO - data_loader.py:80 - load_csv() - CSV loaded successfully from E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv with shape (500, 3)
+2026-06-07 20:30:53 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_data | status=success | time=0.1935s | memory=90.19MB
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Raw Data shape: (500, 3)
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Raw Data columns: ['Date', 'Asset', 'Price']
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Raw Data missing values: 0
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Load raw data
+2026-06-07 20:30:53 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Clean data
+2026-06-07 20:30:53 - financial_portfolio - INFO - data_cleaning.py:402 - clean_data() - Starting data cleaning pipeline.
+2026-06-07 20:30:53 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=clean_data | status=failed | time=0.0909s | memory=91.57MB
+2026-06-07 20:30:53 - financial_portfolio - ERROR - performance_tracker.py:567 - track_step() - Step failed: clean_data | Error: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\monitoring\performance_tracker.py", line 545, in track_step
+    yield
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 144, in clean_data
+    cleaned_data = self.cleaner.clean_data(
+        dataframe=raw_data,
+        cap_outliers=self.cap_outliers,
+    )
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 411, in clean_data
+    self.validate_columns(dataframe)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 381, in validate_columns
+    validate_required_columns(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        available_columns=dataframe.columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        required_columns=self.required_columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\utils\exception_handler.py", line 496, in validate_required_columns
+    raise MissingColumnError(
+    ...<2 lines>...
+    )
+src.utils.exception_handler.MissingColumnError: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+2026-06-07 20:30:53 - financial_portfolio - ERROR - logger.py:362 - log_step_error() - Error in step 'Data pipeline': [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+Traceback (most recent call last):
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 280, in run
+    cleaned_data = self.clean_data(raw_data)
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 144, in clean_data
+    cleaned_data = self.cleaner.clean_data(
+        dataframe=raw_data,
+        cap_outliers=self.cap_outliers,
+    )
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 411, in clean_data
+    self.validate_columns(dataframe)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 381, in validate_columns
+    validate_required_columns(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        available_columns=dataframe.columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        required_columns=self.required_columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\utils\exception_handler.py", line 496, in validate_required_columns
+    raise MissingColumnError(
+    ...<2 lines>...
+    )
+src.utils.exception_handler.MissingColumnError: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+2026-06-07 20:30:53 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-07 20:30:53 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-07 20:45:07 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-07 20:45:07 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Financial Portfolio Data Pipeline
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Create required directories
+2026-06-07 20:45:07 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=create_required_directories | status=success | time=0.0116s | memory=88.09MB
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Create required directories
+2026-06-07 20:45:07 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Load raw data
+2026-06-07 20:45:07 - financial_portfolio - INFO - data_loader.py:80 - load_csv() - CSV loaded successfully from E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv with shape (500, 3)
+2026-06-07 20:45:08 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_data | status=success | time=0.0187s | memory=89.95MB
+2026-06-07 20:45:08 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Raw Data shape: (500, 3)
+2026-06-07 20:45:08 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Raw Data columns: ['Date', 'Asset', 'Price']
+2026-06-07 20:45:08 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Raw Data missing values: 0
+2026-06-07 20:45:08 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Load raw data
+2026-06-07 20:45:08 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Clean data
+2026-06-07 20:45:08 - financial_portfolio - INFO - data_cleaning.py:402 - clean_data() - Starting data cleaning pipeline.
+2026-06-07 20:45:08 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=clean_data | status=failed | time=0.0112s | memory=91.45MB
+2026-06-07 20:45:08 - financial_portfolio - ERROR - performance_tracker.py:567 - track_step() - Step failed: clean_data | Error: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+Traceback (most recent call last):
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\monitoring\performance_tracker.py", line 545, in track_step
+    yield
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 144, in clean_data
+    cleaned_data = self.cleaner.clean_data(
+        dataframe=raw_data,
+        cap_outliers=self.cap_outliers,
+    )
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 411, in clean_data
+    self.validate_columns(dataframe)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 381, in validate_columns
+    validate_required_columns(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        available_columns=dataframe.columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        required_columns=self.required_columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\utils\exception_handler.py", line 496, in validate_required_columns
+    raise MissingColumnError(
+    ...<2 lines>...
+    )
+src.utils.exception_handler.MissingColumnError: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+2026-06-07 20:45:08 - financial_portfolio - ERROR - logger.py:362 - log_step_error() - Error in step 'Data pipeline': [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+Traceback (most recent call last):
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 280, in run
+    cleaned_data = self.clean_data(raw_data)
+  File "e:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\scripts\run_data_pipeline.py", line 144, in clean_data
+    cleaned_data = self.cleaner.clean_data(
+        dataframe=raw_data,
+        cap_outliers=self.cap_outliers,
+    )
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 411, in clean_data
+    self.validate_columns(dataframe)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\data_processing\data_cleaning.py", line 381, in validate_columns
+    validate_required_columns(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        available_columns=dataframe.columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        required_columns=self.required_columns,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\src\utils\exception_handler.py", line 496, in validate_required_columns
+    raise MissingColumnError(
+    ...<2 lines>...
+    )
+src.utils.exception_handler.MissingColumnError: [MISSING_COLUMN_ERROR] Required columns are missing from the dataset. | Details: {'missing_columns': ['asset_name', 'asset_type', 'asset_value', 'portfolio_id', 'portfolio_value', 'quantity'], 'available_columns': ['asset', 'date', 'price']}
+2026-06-07 20:45:08 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-07 20:45:08 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-07 20:46:13 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-07 20:46:13 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Financial Portfolio Data Pipeline
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Create required directories
+2026-06-07 20:46:13 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=create_required_directories | status=success | time=0.0110s | memory=88.13MB
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Create required directories
+2026-06-07 20:46:13 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Load raw data
+2026-06-07 20:46:13 - financial_portfolio - INFO - data_loader.py:80 - load_csv() - CSV loaded successfully from E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv with shape (500, 3)
+2026-06-07 20:46:14 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_data | status=success | time=0.0329s | memory=89.99MB
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Raw Data shape: (500, 3)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Raw Data columns: ['Date', 'Asset', 'Price']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Raw Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Load raw data
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Clean data
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_cleaning.py:615 - clean_data() - Starting data cleaning pipeline.
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_cleaning.py:255 - adapt_simple_portfolio_csv() - Simple CSV format detected. Converting date, asset, price into full portfolio schema.
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_cleaning.py:114 - remove_duplicates() - Removed 0 duplicate rows.
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_cleaning.py:553 - remove_invalid_financial_rows() - Removed 0 invalid financial rows.
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_cleaning.py:648 - clean_data() - Data cleaning completed successfully.
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Cleaned Data shape: (500, 9)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Cleaned Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Cleaned Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\processed\cleaned_financial_data.csv with shape (500, 9)
+2026-06-07 20:46:14 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=clean_data | status=success | time=0.2216s | memory=92.58MB
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Cleaned Data shape: (500, 9)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Cleaned Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Cleaned Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Clean data
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Feature engineering
+2026-06-07 20:46:14 - financial_portfolio - INFO - feature_engineering.py:400 - engineer_features() - Starting feature engineering pipeline.
+2026-06-07 20:46:14 - financial_portfolio - INFO - feature_engineering.py:419 - engineer_features() - Feature engineering completed successfully.
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Feature Engineered Data shape: (500, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Feature Engineered Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value', 'daily_return', 'portfolio_value_lag_1', 'portfolio_value_lag_3', 'portfolio_value_lag_7', 'daily_return_lag_1', 'daily_return_lag_3', 'daily_return_lag_7', 'portfolio_value_rolling_mean_7', 'portfolio_value_rolling_std_7', 'portfolio_value_rolling_mean_14', 'portfolio_value_rolling_std_14', 'portfolio_value_rolling_mean_30', 'portfolio_value_rolling_std_30', 'daily_return_rolling_mean_7', 'daily_return_rolling_std_7', 'daily_return_rolling_mean_14', 'daily_return_rolling_std_14', 'daily_return_rolling_mean_30', 'daily_return_rolling_std_30', 'day', 'month', 'quarter', 'year', 'day_of_week', 'week_of_year', 'is_month_start', 'is_month_end', 'is_quarter_start', 'is_quarter_end', 'asset_weight', 'price_quantity_interaction', 'total_asset_value', 'average_asset_value', 'max_asset_value', 'min_asset_value', 'asset_count']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Feature Engineered Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\processed\feature_engineered_data.csv with shape (500, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=feature_engineering | status=success | time=0.2333s | memory=94.64MB
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Feature Engineered Data shape: (500, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Feature Engineered Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value', 'daily_return', 'portfolio_value_lag_1', 'portfolio_value_lag_3', 'portfolio_value_lag_7', 'daily_return_lag_1', 'daily_return_lag_3', 'daily_return_lag_7', 'portfolio_value_rolling_mean_7', 'portfolio_value_rolling_std_7', 'portfolio_value_rolling_mean_14', 'portfolio_value_rolling_std_14', 'portfolio_value_rolling_mean_30', 'portfolio_value_rolling_std_30', 'daily_return_rolling_mean_7', 'daily_return_rolling_std_7', 'daily_return_rolling_mean_14', 'daily_return_rolling_std_14', 'daily_return_rolling_mean_30', 'daily_return_rolling_std_30', 'day', 'month', 'quarter', 'year', 'day_of_week', 'week_of_year', 'is_month_start', 'is_month_end', 'is_quarter_start', 'is_quarter_end', 'asset_weight', 'price_quantity_interaction', 'total_asset_value', 'average_asset_value', 'max_asset_value', 'min_asset_value', 'asset_count']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Feature Engineered Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Feature engineering
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Split data
+2026-06-07 20:46:14 - financial_portfolio - INFO - train_test_split.py:184 - split_train_validation_test() - Starting train-validation-test split.
+2026-06-07 20:46:14 - financial_portfolio - INFO - train_test_split.py:216 - split_train_validation_test() - Train-validation-test split completed. Train: (350, 45) | Validation: (50, 45) | Test: (100, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:48 - __init__() - DataLoader initialized.
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\processed\train_data.csv with shape (350, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\processed\test_data.csv with shape (100, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\processed\validation_data.csv with shape (50, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - train_test_split.py:310 - save_splits() - Split datasets saved successfully.
+2026-06-07 20:46:14 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=split_data | status=success | time=0.0817s | memory=94.80MB
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Train Data shape: (350, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Train Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value', 'daily_return', 'portfolio_value_lag_1', 'portfolio_value_lag_3', 'portfolio_value_lag_7', 'daily_return_lag_1', 'daily_return_lag_3', 'daily_return_lag_7', 'portfolio_value_rolling_mean_7', 'portfolio_value_rolling_std_7', 'portfolio_value_rolling_mean_14', 'portfolio_value_rolling_std_14', 'portfolio_value_rolling_mean_30', 'portfolio_value_rolling_std_30', 'daily_return_rolling_mean_7', 'daily_return_rolling_std_7', 'daily_return_rolling_mean_14', 'daily_return_rolling_std_14', 'daily_return_rolling_mean_30', 'daily_return_rolling_std_30', 'day', 'month', 'quarter', 'year', 'day_of_week', 'week_of_year', 'is_month_start', 'is_month_end', 'is_quarter_start', 'is_quarter_end', 'asset_weight', 'price_quantity_interaction', 'total_asset_value', 'average_asset_value', 'max_asset_value', 'min_asset_value', 'asset_count']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Train Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Validation Data shape: (50, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Validation Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value', 'daily_return', 'portfolio_value_lag_1', 'portfolio_value_lag_3', 'portfolio_value_lag_7', 'daily_return_lag_1', 'daily_return_lag_3', 'daily_return_lag_7', 'portfolio_value_rolling_mean_7', 'portfolio_value_rolling_std_7', 'portfolio_value_rolling_mean_14', 'portfolio_value_rolling_std_14', 'portfolio_value_rolling_mean_30', 'portfolio_value_rolling_std_30', 'daily_return_rolling_mean_7', 'daily_return_rolling_std_7', 'daily_return_rolling_mean_14', 'daily_return_rolling_std_14', 'daily_return_rolling_mean_30', 'daily_return_rolling_std_30', 'day', 'month', 'quarter', 'year', 'day_of_week', 'week_of_year', 'is_month_start', 'is_month_end', 'is_quarter_start', 'is_quarter_end', 'asset_weight', 'price_quantity_interaction', 'total_asset_value', 'average_asset_value', 'max_asset_value', 'min_asset_value', 'asset_count']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Validation Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:258 - log_dataframe_info() - Test Data shape: (100, 45)
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:259 - log_dataframe_info() - Test Data columns: ['date', 'asset', 'price', 'asset_name', 'asset_type', 'quantity', 'asset_value', 'portfolio_id', 'portfolio_value', 'daily_return', 'portfolio_value_lag_1', 'portfolio_value_lag_3', 'portfolio_value_lag_7', 'daily_return_lag_1', 'daily_return_lag_3', 'daily_return_lag_7', 'portfolio_value_rolling_mean_7', 'portfolio_value_rolling_std_7', 'portfolio_value_rolling_mean_14', 'portfolio_value_rolling_std_14', 'portfolio_value_rolling_mean_30', 'portfolio_value_rolling_std_30', 'daily_return_rolling_mean_7', 'daily_return_rolling_std_7', 'daily_return_rolling_mean_14', 'daily_return_rolling_std_14', 'daily_return_rolling_mean_30', 'daily_return_rolling_std_30', 'day', 'month', 'quarter', 'year', 'day_of_week', 'week_of_year', 'is_month_start', 'is_month_end', 'is_quarter_start', 'is_quarter_end', 'asset_weight', 'price_quantity_interaction', 'total_asset_value', 'average_asset_value', 'max_asset_value', 'min_asset_value', 'asset_count']
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:260 - log_dataframe_info() - Test Data missing values: 0
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Split data
+2026-06-07 20:46:14 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Generate split summary
+2026-06-07 20:46:14 - financial_portfolio - INFO - data_loader.py:132 - save_csv() - CSV saved successfully at E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\data_split_summary.csv with shape (1, 10)
+2026-06-07 20:46:15 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=generate_split_summary | status=success | time=0.0253s | memory=94.82MB
+2026-06-07 20:46:15 - financial_portfolio - INFO - run_data_pipeline.py:261 - generate_split_summary() - Data split summary: {'train_rows': 350, 'test_rows': 100, 'total_rows': 500, 'train_start_date': '2023-01-02 00:00:00', 'train_end_date': '2023-08-21 00:00:00', 'test_start_date': '2023-10-04 00:00:00', 'test_end_date': '2023-12-31 00:00:00', 'validation_rows': 50, 'validation_start_date': '2023-08-21 00:00:00', 'validation_end_date': '2023-10-04 00:00:00'}
+2026-06-07 20:46:15 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Generate split summary
+2026-06-07 20:46:15 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-07 20:46:15 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-07 20:46:15 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-07 20:46:15 - financial_portfolio - INFO - logger.py:226 - log_section() - Data Pipeline Completed Successfully
+2026-06-07 20:46:15 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-07 20:46:15 - financial_portfolio - INFO - run_data_pipeline.py:310 - run() - Pipeline summary: {'status': 'success', 'raw_rows': 500, 'cleaned_rows': 500, 'feature_rows': 500, 'feature_columns': 45, 'train_rows': 350, 'validation_rows': 50, 'test_rows': 100, 'split_summary': {'train_rows': 350, 'test_rows': 100, 'total_rows': 500, 'train_start_date': '2023-01-02 00:00:00', 'train_end_date': '2023-08-21 00:00:00', 'test_start_date': '2023-10-04 00:00:00', 'test_end_date': '2023-12-31 00:00:00', 'validation_rows': 50, 'validation_start_date': '2023-08-21 00:00:00', 'validation_end_date': '2023-10-04 00:00:00'}, 'performance_summary': {'total_records': 6, 'total_execution_time_seconds': 0.60584, 'average_execution_time_seconds': 0.100973, 'successful_steps': 6, 'failed_steps': 0, 'categories': ['data_pipeline'], 'generated_at': '2026-06-07 20:46:15'}}
+2026-06-08 09:51:48 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-08 09:52:54 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-08 09:52:54 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting All Models Workflow
+2026-06-08 09:52:54 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-08 09:52:54 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Run forecasting models
+2026-06-08 09:52:55 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_training_data | status=success | time=0.3122s | memory=416.78MB
+2026-06-08 09:52:55 - financial_portfolio - INFO - arima_model.py:381 - fit() - Starting ARIMA training process.
+2026-06-08 09:52:55 - financial_portfolio - INFO - arima_model.py:300 - fit_asset_model() - Training ARIMA model for asset: Bond A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:307 - fit_asset_model() - ARIMA model trained successfully for asset: Bond A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:362 - evaluate_asset_model() - ARIMA metrics for Bond A: {'mae': 117.492363, 'mse': 19880.693688, 'rmse': 140.998914, 'mape': 81.79381, 'r2_score': -0.064803, 'train_records': 289, 'test_records': 73}
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:300 - fit_asset_model() - Training ARIMA model for asset: Bond B
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:307 - fit_asset_model() - ARIMA model trained successfully for asset: Bond B
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:362 - evaluate_asset_model() - ARIMA metrics for Bond B: {'mae': 114.776032, 'mse': 16204.403996, 'rmse': 127.29652, 'mape': 63.933268, 'r2_score': -0.096416, 'train_records': 286, 'test_records': 72}
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:300 - fit_asset_model() - Training ARIMA model for asset: Commodity A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:307 - fit_asset_model() - ARIMA model trained successfully for asset: Commodity A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:362 - evaluate_asset_model() - ARIMA metrics for Commodity A: {'mae': 192.691023, 'mse': 49915.2408, 'rmse': 223.41719, 'mape': 49.985867, 'r2_score': -2.574722, 'train_records': 290, 'test_records': 73}
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:300 - fit_asset_model() - Training ARIMA model for asset: Stock A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:307 - fit_asset_model() - ARIMA model trained successfully for asset: Stock A
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:362 - evaluate_asset_model() - ARIMA metrics for Stock A: {'mae': 167.486458, 'mse': 39680.603457, 'rmse': 199.199908, 'mape': 105.949788, 'r2_score': -2.218327, 'train_records': 286, 'test_records': 72}
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:300 - fit_asset_model() - Training ARIMA model for asset: Stock B
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:307 - fit_asset_model() - ARIMA model trained successfully for asset: Stock B
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:362 - evaluate_asset_model() - ARIMA metrics for Stock B: {'mae': 167.521453, 'mse': 38121.858942, 'rmse': 195.248198, 'mape': 59.198955, 'r2_score': -1.823296, 'train_records': 277, 'test_records': 70}
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:436 - fit() - ARIMA training process completed.
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:564 - save_models() - ARIMA models saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\arima_models.pkl
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:614 - save_metrics() - ARIMA metrics saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\arima_metrics.json
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:677 - save_metrics_csv() - ARIMA metrics CSV saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\arima_metrics.csv
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:637 - save_forecasts() - ARIMA forecast results saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\arima_forecast_results.csv
+2026-06-08 09:52:56 - financial_portfolio - INFO - arima_model.py:724 - train_forecast_save() - ARIMA workflow summary: {'status': 'success', 'model_type': 'ARIMA', 'order': (5, 1, 0), 'trained_assets': ['Bond A', 'Bond B', 'Commodity A', 'Stock A', 'Stock B'], 'asset_count': 5, 'forecast_steps': 30, 'forecast_rows': 150, 'model_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\arima_models.pkl", 'metrics_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\arima_metrics.json", 'forecast_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\arima_forecast_results.csv"}
+2026-06-08 09:52:56 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=train_arima_model | status=success | time=1.3494s | memory=432.27MB
+2026-06-08 09:52:56 - financial_portfolio - INFO - xgboost_model.py:585 - fit() - Starting XGBoost model training.
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:624 - fit() - XGBoost model training completed.
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:625 - fit() - XGBoost metrics: {'mae': 29.615809, 'mse': 1620.766791, 'rmse': 40.258748, 'mape': 14.915182, 'r2_score': 0.916421, 'feature_count': 29}
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:773 - save_model() - XGBoost model saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\xgboost_model.pkl
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:828 - save_feature_columns() - XGBoost feature columns saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\xgboost_feature_columns.json
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:845 - save_metrics_json() - XGBoost metrics JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\xgboost_metrics.json
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:862 - save_metrics_csv() - XGBoost metrics CSV saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\xgboost_metrics.csv
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:881 - save_predictions() - XGBoost predictions saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\xgboost_predictions.csv
+2026-06-08 09:52:58 - financial_portfolio - INFO - xgboost_model.py:739 - save_feature_importance() - XGBoost feature importance saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\xgboost_feature_importance.csv
+2026-06-08 09:53:06 - financial_portfolio - INFO - xgboost_model.py:1068 - save_forecast_results() - XGBoost forecast results saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\xgboost_forecast_results.csv
+2026-06-08 09:53:06 - financial_portfolio - INFO - xgboost_model.py:1116 - train_forecast_save() - XGBoost workflow summary: {'status': 'success', 'model_type': 'XGBoost Regressor', 'target_column': 'price', 'feature_count': 29, 'forecast_steps': 30, 'forecast_rows': 150, 'metrics': {'mae': 29.615809, 'mse': 1620.766791, 'rmse': 40.258748, 'mape': 14.915182, 'r2_score': 0.916421, 'feature_count': 29}, 'model_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\xgboost_model.pkl", 'metrics_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\xgboost_metrics.json", 'predictions_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\xgboost_predictions.csv", 'forecast_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\xgboost_forecast_results.csv"}
+2026-06-08 09:53:06 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=train_xgboost_model | status=success | time=9.4681s | memory=428.75MB
+2026-06-08 09:53:06 - financial_portfolio - INFO - prophet_model.py:447 - fit() - Starting Prophet training process.
+2026-06-08 09:53:06 - financial_portfolio - INFO - prophet_model.py:338 - fit_asset_model() - Training Prophet model for asset: Bond A
+2026-06-08 09:53:07 - cmdstanpy - INFO - model.py:2104 - _run_cmdstan() - Chain [1] start processing
+2026-06-08 09:53:08 - cmdstanpy - INFO - model.py:2161 - _run_cmdstan() - Chain [1] done processing
+2026-06-08 09:53:08 - financial_portfolio - INFO - prophet_model.py:345 - fit_asset_model() - Prophet model trained successfully for asset: Bond A
+2026-06-08 09:53:08 - financial_portfolio - INFO - prophet_model.py:428 - evaluate_asset_model() - Prophet metrics for Bond A: {'mae': 5653.382457, 'mse': 49119726.855649, 'rmse': 7008.546701, 'mape': 2272.293019, 'r2_score': -2211.237131, 'train_records': 80, 'test_records': 20}
+2026-06-08 09:53:08 - financial_portfolio - INFO - prophet_model.py:338 - fit_asset_model() - Training Prophet model for asset: Bond B
+2026-06-08 09:53:09 - cmdstanpy - INFO - model.py:2104 - _run_cmdstan() - Chain [1] start processing
+2026-06-08 09:53:09 - cmdstanpy - INFO - model.py:2161 - _run_cmdstan() - Chain [1] done processing
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:345 - fit_asset_model() - Prophet model trained successfully for asset: Bond B
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:428 - evaluate_asset_model() - Prophet metrics for Bond B: {'mae': 302.233943, 'mse': 107746.550109, 'rmse': 328.247696, 'mape': 105.270982, 'r2_score': -5.655645, 'train_records': 72, 'test_records': 18}
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:338 - fit_asset_model() - Training Prophet model for asset: Commodity A
+2026-06-08 09:53:09 - cmdstanpy - INFO - model.py:2104 - _run_cmdstan() - Chain [1] start processing
+2026-06-08 09:53:09 - cmdstanpy - INFO - model.py:2161 - _run_cmdstan() - Chain [1] done processing
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:345 - fit_asset_model() - Prophet model trained successfully for asset: Commodity A
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:428 - evaluate_asset_model() - Prophet metrics for Commodity A: {'mae': 247.266823, 'mse': 79795.571074, 'rmse': 282.481099, 'mape': 115.608969, 'r2_score': -3.23068, 'train_records': 70, 'test_records': 18}
+2026-06-08 09:53:09 - financial_portfolio - INFO - prophet_model.py:338 - fit_asset_model() - Training Prophet model for asset: Stock A
+2026-06-08 09:53:10 - cmdstanpy - INFO - model.py:2104 - _run_cmdstan() - Chain [1] start processing
+2026-06-08 09:53:10 - cmdstanpy - INFO - model.py:2161 - _run_cmdstan() - Chain [1] done processing
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:345 - fit_asset_model() - Prophet model trained successfully for asset: Stock A
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:428 - evaluate_asset_model() - Prophet metrics for Stock A: {'mae': 1388.667486, 'mse': 5445371.659836, 'rmse': 2333.532014, 'mape': 558.34847, 'r2_score': -292.648957, 'train_records': 64, 'test_records': 17}
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:338 - fit_asset_model() - Training Prophet model for asset: Stock B
+2026-06-08 09:53:10 - cmdstanpy - INFO - model.py:2104 - _run_cmdstan() - Chain [1] start processing
+2026-06-08 09:53:10 - cmdstanpy - INFO - model.py:2161 - _run_cmdstan() - Chain [1] done processing
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:345 - fit_asset_model() - Prophet model trained successfully for asset: Stock B
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:428 - evaluate_asset_model() - Prophet metrics for Stock B: {'mae': 3117.338141, 'mse': 24308044.434377, 'rmse': 4930.318898, 'mape': 1057.753097, 'r2_score': -1321.568832, 'train_records': 52, 'test_records': 14}
+2026-06-08 09:53:10 - financial_portfolio - INFO - prophet_model.py:536 - fit() - Prophet training process completed.
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:687 - save_models() - Prophet models saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\prophet_models.pkl
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:759 - save_metrics_json() - Prophet metrics JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\prophet_metrics.json
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:799 - save_metrics_csv() - Prophet metrics CSV saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\prophet_metrics.csv
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:818 - save_test_predictions() - Prophet test predictions saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\prophet_test_predictions.csv
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:841 - save_forecasts() - Prophet forecast results saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\prophet_forecast_results.csv
+2026-06-08 09:53:11 - financial_portfolio - INFO - prophet_model.py:898 - train_forecast_save() - Prophet workflow summary: {'status': 'success', 'model_type': 'Prophet', 'target_column': 'price', 'trained_assets': ['Bond A', 'Bond B', 'Commodity A', 'Stock A', 'Stock B'], 'asset_count': 5, 'forecast_periods': 30, 'forecast_rows': 150, 'metrics': {'Bond A': {'mae': 5653.382457, 'mse': 49119726.855649, 'rmse': 7008.546701, 'mape': 2272.293019, 'r2_score': -2211.237131, 'train_records': 80, 'test_records': 20}, 'Bond B': {'mae': 302.233943, 'mse': 107746.550109, 'rmse': 328.247696, 'mape': 105.270982, 'r2_score': -5.655645, 'train_records': 72, 'test_records': 18}, 'Commodity A': {'mae': 247.266823, 'mse': 79795.571074, 'rmse': 282.481099, 'mape': 115.608969, 'r2_score': -3.23068, 'train_records': 70, 'test_records': 18}, 'Stock A': {'mae': 1388.667486, 'mse': 5445371.659836, 'rmse': 2333.532014, 'mape': 558.34847, 'r2_score': -292.648957, 'train_records': 64, 'test_records': 17}, 'Stock B': {'mae': 3117.338141, 'mse': 24308044.434377, 'rmse': 4930.318898, 'mape': 1057.753097, 'r2_score': -1321.568832, 'train_records': 52, 'test_records': 14}}, 'model_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\prophet_models.pkl", 'metrics_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\prophet_metrics.json", 'forecast_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\prophet_forecast_results.csv"}
+2026-06-08 09:53:11 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=train_prophet_model | status=success | time=4.6128s | memory=430.44MB
+2026-06-08 09:53:11 - financial_portfolio - INFO - lstm_model.py:594 - fit() - Starting LSTM training process.
+2026-06-08 09:53:11 - financial_portfolio - INFO - lstm_model.py:466 - fit_asset_model() - Training LSTM model for asset: Bond A
+2026-06-08 09:53:13 - tensorflow - WARNING - config.py:464 - list_physical_devices() - TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+2026-06-08 09:53:21 - financial_portfolio - INFO - lstm_model.py:533 - fit_asset_model() - LSTM metrics for Bond A: {'mae': 89.674348, 'mse': 12392.217943, 'rmse': 111.320339, 'mape': 57.029427, 'r2_score': 0.354454, 'train_records': 281, 'test_records': 71}
+2026-06-08 09:53:21 - financial_portfolio - INFO - lstm_model.py:466 - fit_asset_model() - Training LSTM model for asset: Bond B
+2026-06-08 09:53:27 - financial_portfolio - INFO - lstm_model.py:533 - fit_asset_model() - LSTM metrics for Bond B: {'mae': 90.881765, 'mse': 13779.901498, 'rmse': 117.387825, 'mape': 65.80252, 'r2_score': 0.084145, 'train_records': 278, 'test_records': 70}
+2026-06-08 09:53:27 - financial_portfolio - INFO - lstm_model.py:466 - fit_asset_model() - Training LSTM model for asset: Commodity A
+2026-06-08 09:53:33 - tensorflow - WARNING - polymorphic_function.py:157 - called_with_tracing() - 5 out of the last 7 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x0000022EF4B55DA0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2026-06-08 09:53:34 - tensorflow - WARNING - polymorphic_function.py:157 - called_with_tracing() - 6 out of the last 9 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x0000022EF4B55DA0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2026-06-08 09:53:34 - financial_portfolio - INFO - lstm_model.py:533 - fit_asset_model() - LSTM metrics for Commodity A: {'mae': 98.450843, 'mse': 12298.749262, 'rmse': 110.899726, 'mape': 37.536056, 'r2_score': 0.114388, 'train_records': 282, 'test_records': 71}
+2026-06-08 09:53:34 - financial_portfolio - INFO - lstm_model.py:466 - fit_asset_model() - Training LSTM model for asset: Stock A
+2026-06-08 09:53:39 - financial_portfolio - INFO - lstm_model.py:533 - fit_asset_model() - LSTM metrics for Stock A: {'mae': 80.690281, 'mse': 12334.522037, 'rmse': 111.060893, 'mape': 56.978776, 'r2_score': -0.038429, 'train_records': 278, 'test_records': 70}
+2026-06-08 09:53:39 - financial_portfolio - INFO - lstm_model.py:466 - fit_asset_model() - Training LSTM model for asset: Stock B
+2026-06-08 09:53:45 - financial_portfolio - INFO - lstm_model.py:533 - fit_asset_model() - LSTM metrics for Stock B: {'mae': 67.199357, 'mse': 8496.736809, 'rmse': 92.177746, 'mape': 43.938399, 'r2_score': 0.337671, 'train_records': 269, 'test_records': 68}
+2026-06-08 09:53:45 - financial_portfolio - INFO - lstm_model.py:647 - fit() - LSTM training process completed.
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:805 - save_models() - LSTM model for Bond A saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_models\lstm_bond_a.keras
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:805 - save_models() - LSTM model for Bond B saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_models\lstm_bond_b.keras
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:805 - save_models() - LSTM model for Commodity A saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_models\lstm_commodity_a.keras
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:805 - save_models() - LSTM model for Stock A saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_models\lstm_stock_a.keras
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:805 - save_models() - LSTM model for Stock B saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_models\lstm_stock_b.keras
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:839 - save_scalers() - LSTM scalers saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\lstm_scalers.pkl
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:910 - save_metrics_json() - LSTM metrics JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\lstm_metrics.json
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:950 - save_metrics_csv() - LSTM metrics CSV saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\lstm_metrics.csv
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:969 - save_test_predictions() - LSTM test predictions saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\lstm_test_predictions.csv
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:992 - save_forecasts() - LSTM forecast results saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\lstm_forecast_results.csv
+2026-06-08 09:53:57 - financial_portfolio - INFO - lstm_model.py:1055 - train_forecast_save() - LSTM workflow summary: {'status': 'success', 'model_type': 'LSTM', 'target_column': 'price', 'trained_assets': ['Bond A', 'Bond B', 'Commodity A', 'Stock A', 'Stock B'], 'asset_count': 5, 'sequence_length': 10, 'forecast_steps': 30, 'forecast_rows': 150, 'metrics': {'Bond A': {'mae': 89.674348, 'mse': 12392.217943, 'rmse': 111.320339, 'mape': 57.029427, 'r2_score': 0.354454, 'train_records': 281, 'test_records': 71}, 'Bond B': {'mae': 90.881765, 'mse': 13779.901498, 'rmse': 117.387825, 'mape': 65.80252, 'r2_score': 0.084145, 'train_records': 278, 'test_records': 70}, 'Commodity A': {'mae': 98.450843, 'mse': 12298.749262, 'rmse': 110.899726, 'mape': 37.536056, 'r2_score': 0.114388, 'train_records': 282, 'test_records': 71}, 'Stock A': {'mae': 80.690281, 'mse': 12334.522037, 'rmse': 111.060893, 'mape': 56.978776, 'r2_score': -0.038429, 'train_records': 278, 'test_records': 70}, 'Stock B': {'mae': 67.199357, 'mse': 8496.736809, 'rmse': 92.177746, 'mape': 43.938399, 'r2_score': 0.337671, 'train_records': 269, 'test_records': 68}}, 'model_dir': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\lstm_models", 'scaler_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\lstm_scalers.pkl", 'metrics_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\lstm_metrics.json", 'forecast_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\lstm_forecast_results.csv"}
+2026-06-08 09:53:57 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=train_lstm_model | status=success | time=46.3948s | memory=739.27MB
+2026-06-08 09:53:57 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 09:53:57 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-08 09:53:57 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=run_forecasting_models | status=success | time=62.8765s | memory=739.27MB
+2026-06-08 09:53:57 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Run forecasting models
+2026-06-08 09:53:57 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Run anomaly detection model
+2026-06-08 09:53:58 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_anomaly_training_data | status=success | time=0.0081s | memory=739.28MB
+2026-06-08 09:53:58 - financial_portfolio - INFO - anomaly_detector.py:581 - fit_detect() - Starting complete anomaly detection workflow.
+2026-06-08 09:53:58 - financial_portfolio - INFO - anomaly_detector.py:358 - detect_iqr_anomalies() - IQR anomaly detection completed. Detected anomalies: 0
+2026-06-08 09:53:58 - financial_portfolio - INFO - anomaly_detector.py:402 - detect_z_score_anomalies() - Z-score anomaly detection completed. Detected anomalies: 0
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:506 - detect_isolation_forest_anomalies() - Isolation Forest anomaly detection completed. Detected anomalies: 27
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:605 - fit_detect() - Anomaly detection workflow completed successfully.
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:807 - save_model() - Anomaly detection model saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\anomaly_detection_model.pkl
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:871 - save_results() - Anomaly detection results saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\anomaly_detection_results.csv
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:891 - save_summary_json() - Anomaly summary JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\anomaly_summary.json
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:915 - save_summary_csv() - Anomaly summary CSV saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\anomaly_summary.csv
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:1030 - save_markdown_report() - Anomaly Markdown report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\anomaly_report.md
+2026-06-08 09:54:00 - financial_portfolio - INFO - anomaly_detector.py:1074 - fit_detect_save() - Anomaly detection workflow summary: {'status': 'success', 'model_type': 'Multi-method anomaly detection', 'methods': ['IQR', 'Z-Score', 'Isolation Forest'], 'total_records': 500, 'total_anomalies': 27, 'anomaly_rate_percent': 5.4, 'asset_count': 5, 'model_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\models\\anomaly_detection_model.pkl", 'results_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\outputs\\anomaly_detection_results.csv", 'summary_json_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\anomaly_summary.json", 'summary_csv_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\tables\\anomaly_summary.csv", 'report_path': "E:\\VS CODE\\The Developer's Arena Internship 6 months\\Month 5\\financial_portfolio_forecasting_anomaly_detection\\reports\\anomaly_report.md"}
+2026-06-08 09:54:00 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=train_anomaly_detector | status=success | time=2.6721s | memory=675.62MB
+2026-06-08 09:54:00 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 09:54:00 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-08 09:54:01 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=run_anomaly_model | status=success | time=2.9886s | memory=675.62MB
+2026-06-08 09:54:01 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Run anomaly detection model
+2026-06-08 09:54:01 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 09:54:01 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-08 09:54:01 - financial_portfolio - INFO - train_all_models.py:141 - save_json_summary() - Final all-model summary JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\all_models_training_summary.json
+2026-06-08 09:54:01 - financial_portfolio - INFO - train_all_models.py:260 - save_markdown_summary() - Final all-model summary Markdown saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\all_models_training_summary.md
+2026-06-08 09:54:01 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-08 09:54:01 - financial_portfolio - INFO - logger.py:226 - log_section() - All Models Workflow Completed
+2026-06-08 09:54:01 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-08 10:22:06 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-08 10:22:06 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-08 10:22:06 - financial_portfolio - INFO - logger.py:226 - log_section() - Starting Model Evaluation Workflow
+2026-06-08 10:22:06 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-08 10:22:06 - financial_portfolio - INFO - evaluate_models.py:155 - load_csv_if_exists() - Loaded CSV file: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\data\raw\financial_portfolio_data.csv with shape (500, 3)
+2026-06-08 10:22:06 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=load_raw_dataset_for_evaluation | status=success | time=0.0257s | memory=176.82MB
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:12 - matplotlib.category - INFO - category.py:224 - update() - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-06-08 10:22:14 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Evaluate XGBoost predictions
+2026-06-08 10:22:14 - financial_portfolio - INFO - evaluate_models.py:155 - load_csv_if_exists() - Loaded CSV file: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\xgboost_predictions.csv with shape (100, 5)
+2026-06-08 10:22:15 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=evaluate_xgboost_predictions | status=success | time=0.7693s | memory=280.61MB
+2026-06-08 10:22:15 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Evaluate XGBoost predictions
+2026-06-08 10:22:15 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Evaluate Prophet predictions
+2026-06-08 10:22:15 - financial_portfolio - INFO - evaluate_models.py:155 - load_csv_if_exists() - Loaded CSV file: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\prophet_test_predictions.csv with shape (87, 7)
+2026-06-08 10:22:16 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=evaluate_prophet_predictions | status=success | time=0.6662s | memory=280.65MB
+2026-06-08 10:22:16 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Evaluate Prophet predictions
+2026-06-08 10:22:16 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Evaluate LSTM predictions
+2026-06-08 10:22:16 - financial_portfolio - INFO - evaluate_models.py:155 - load_csv_if_exists() - Loaded CSV file: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\lstm_test_predictions.csv with shape (350, 5)
+2026-06-08 10:22:16 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=evaluate_lstm_predictions | status=success | time=0.6700s | memory=308.71MB
+2026-06-08 10:22:16 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Evaluate LSTM predictions
+2026-06-08 10:22:16 - financial_portfolio - INFO - evaluate_models.py:505 - build_forecast_evaluation_table() - Combined forecast evaluation table saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\forecast_evaluation_combined.csv
+2026-06-08 10:22:16 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Evaluate anomaly detection results
+2026-06-08 10:22:16 - financial_portfolio - INFO - evaluate_models.py:155 - load_csv_if_exists() - Loaded CSV file: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\outputs\anomaly_detection_results.csv with shape (500, 39)
+2026-06-08 10:22:18 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=evaluate_anomaly_results | status=success | time=1.7180s | memory=370.78MB
+2026-06-08 10:22:18 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Evaluate anomaly detection results
+2026-06-08 10:22:18 - financial_portfolio - INFO - logger.py:335 - log_step_start() - Started step: Run model comparison
+2026-06-08 10:22:18 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=run_model_comparison | status=success | time=0.1550s | memory=370.80MB
+2026-06-08 10:22:19 - financial_portfolio - INFO - logger.py:346 - log_step_end() - Completed step: Run model comparison
+2026-06-08 10:22:19 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 10:22:19 - financial_portfolio - INFO - performance_tracker.py:433 - save_csv() - Performance CSV report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.csv
+2026-06-08 10:22:19 - financial_portfolio - INFO - evaluate_models.py:213 - save_json() - JSON saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\evaluation_summary.json
+2026-06-08 10:22:19 - financial_portfolio - INFO - evaluate_models.py:743 - save_markdown_summary() - Evaluation Markdown summary saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\evaluation_summary.md
+2026-06-08 10:22:19 - financial_portfolio - INFO - logger.py:225 - log_section() - ======================================================================
+2026-06-08 10:22:19 - financial_portfolio - INFO - logger.py:226 - log_section() - Model Evaluation Workflow Completed
+2026-06-08 10:22:19 - financial_portfolio - INFO - logger.py:227 - log_section() - ======================================================================
+2026-06-08 18:53:03 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-08 18:53:40 - financial_portfolio - INFO - anomaly_detector.py:846 - load_model() - Anomaly detection model loaded from: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\anomaly_detection_model.pkl
+2026-06-08 18:53:40 - financial_portfolio - INFO - anomaly_detector.py:358 - detect_iqr_anomalies() - IQR anomaly detection completed. Detected anomalies: 0
+2026-06-08 18:53:40 - financial_portfolio - INFO - anomaly_detector.py:402 - detect_z_score_anomalies() - Z-score anomaly detection completed. Detected anomalies: 0
+2026-06-08 18:53:40 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 18:53:40 - financial_portfolio - WARNING - performance_tracker.py:400 - save_csv() - No performance records available to save as CSV.
+2026-06-08 18:53:40 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=api_main_anomaly_default | status=success | time=1.6373s | memory=440.95MB
+2026-06-08 18:56:50 - src.monitoring.logger - INFO - logger.py:95 - setup_logging() - Logging configured successfully using E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\config\logging.yaml
+2026-06-08 20:46:05 - financial_portfolio - INFO - anomaly_detector.py:846 - load_model() - Anomaly detection model loaded from: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\models\anomaly_detection_model.pkl
+2026-06-08 20:46:05 - financial_portfolio - INFO - anomaly_detector.py:358 - detect_iqr_anomalies() - IQR anomaly detection completed. Detected anomalies: 0
+2026-06-08 20:46:05 - financial_portfolio - INFO - anomaly_detector.py:402 - detect_z_score_anomalies() - Z-score anomaly detection completed. Detected anomalies: 0
+2026-06-08 20:46:06 - financial_portfolio - INFO - performance_tracker.py:384 - save_json() - Performance JSON report saved at: E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\performance_metrics.json
+2026-06-08 20:46:06 - financial_portfolio - WARNING - performance_tracker.py:400 - save_csv() - No performance records available to save as CSV.
+2026-06-08 20:46:06 - financial_portfolio - INFO - performance_tracker.py:203 - add_record() - Performance tracked | step=api_main_anomaly_default | status=success | time=1.6309s | memory=317.27MB
