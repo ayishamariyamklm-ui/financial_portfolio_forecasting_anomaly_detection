@@ -1,0 +1,158 @@
+# ============================================================
+# Financial Portfolio Forecasting & Anomaly Detection
+# Path Configuration
+# ============================================================
+
+project:
+  root: .
+
+# ============================================================
+# Data Paths
+# ============================================================
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  interim_dir: data/interim
+  external_dir: data/external
+  sample_dir: data/sample
+
+  raw: data/raw/financial_portfolio_data.csv
+  cleaned: data/processed/cleaned_financial_data.csv
+  daily_asset_prices: data/processed/daily_asset_prices.csv
+  train: data/processed/train_data.csv
+  validation: data/processed/validation_data.csv
+  test: data/processed/test_data.csv
+  anomaly_results: data/processed/anomaly_results.csv
+  forecast_results: data/processed/forecast_results.csv
+
+  sample_prediction_input: data/sample/sample_prediction_input.csv
+
+# ============================================================
+# Notebook Paths
+# ============================================================
+
+notebooks:
+  dir: notebooks
+  data_understanding: notebooks/01_data_understanding.ipynb
+  time_series_eda: notebooks/02_time_series_eda.ipynb
+  forecasting_experiments: notebooks/03_forecasting_experiments.ipynb
+  anomaly_detection_experiments: notebooks/04_anomaly_detection_experiments.ipynb
+  model_evaluation: notebooks/05_model_evaluation.ipynb
+
+# ============================================================
+# Source Code Paths
+# ============================================================
+
+src:
+  dir: src
+  data_dir: src/data
+  features_dir: src/features
+  models_dir: src/models
+  visualization_dir: src/visualization
+  utils_dir: src/utils
+
+# ============================================================
+# Model Artifact Paths
+# ============================================================
+
+models:
+  dir: models
+  forecasting_model: models/forecasting_model.pkl
+  anomaly_model: models/anomaly_detection_model.pkl
+  scaler: models/scaler.pkl
+  feature_columns: models/feature_columns.json
+  model_metrics: models/model_metrics.json
+  best_model: models/best_model.pkl
+
+# ============================================================
+# Output Paths
+# ============================================================
+
+outputs:
+  dir: outputs
+  predictions: outputs/predictions.csv
+  forecast_output: outputs/portfolio_forecast.csv
+  anomaly_output: outputs/anomaly_predictions.csv
+
+# ============================================================
+# Report Paths
+# ============================================================
+
+reports:
+  dir: reports
+  figures_dir: reports/figures
+  tables_dir: reports/tables
+  predictions_dir: reports/predictions
+
+  model_report: reports/model_report.md
+  anomaly_report: reports/anomaly_report.md
+  forecast_report: reports/forecast_report.md
+
+  model_comparison_table: reports/tables/model_comparison.csv
+  feature_importance_table: reports/tables/feature_importance.csv
+
+# ============================================================
+# Figure Paths
+# ============================================================
+
+figures:
+  portfolio_trend: reports/figures/portfolio_trend.png
+  asset_allocation: reports/figures/asset_allocation.png
+  daily_returns: reports/figures/daily_returns.png
+  rolling_average: reports/figures/rolling_average.png
+  forecast_plot: reports/figures/forecast_plot.png
+  anomaly_plot: reports/figures/anomaly_plot.png
+  correlation_heatmap: reports/figures/correlation_heatmap.png
+  model_comparison: reports/figures/model_comparison.png
+  residual_plot: reports/figures/residual_plot.png
+
+# ============================================================
+# Logs
+# ============================================================
+
+logs:
+  dir: logs
+  app_log: logs/app.log
+  training_log: logs/training.log
+  evaluation_log: logs/evaluation.log
+  api_log: logs/api.log
+  dashboard_log: logs/dashboard.log
+
+# ============================================================
+# Application Paths
+# ============================================================
+
+app:
+  dir: app
+  api: app/api.py
+  main: app/main.py
+  schemas: app/schemas.py
+
+dashboard:
+  dir: dashboard
+  main: dashboard/dashboard.py
+
+# ============================================================
+# Scripts
+# ============================================================
+
+scripts:
+  dir: scripts
+  run_preprocessing: scripts/run_preprocessing.py
+  train_model: scripts/train_model.py
+  evaluate_model: scripts/evaluate_model.py
+  detect_anomalies: scripts/detect_anomalies.py
+  run_forecast: scripts/run_forecast.py
+
+# ============================================================
+# Documentation
+# ============================================================
+
+docs:
+  dir: docs
+  architecture: docs/architecture.md
+  api_docs: docs/api_docs.md
+  model_report: docs/model_report.md
+  deployment_guide: docs/deployment_guide.md
+  data_dictionary: docs/data_dictionary.md

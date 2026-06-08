@@ -1,0 +1,149 @@
+# ============================================================
+# Financial Portfolio Forecasting & Anomaly Detection
+# Logging Configuration
+# ============================================================
+
+version: 1
+disable_existing_loggers: false
+
+# ============================================================
+# Formatters
+# ============================================================
+
+formatters:
+  simple:
+    format: "%(levelname)s - %(message)s"
+
+  standard:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  detailed:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(funcName)s() - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+# ============================================================
+# Handlers
+# ============================================================
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+
+  app_file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: detailed
+    filename: logs/app.log
+    maxBytes: 5242880
+    backupCount: 5
+    encoding: utf8
+
+  training_file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: detailed
+    filename: logs/training.log
+    maxBytes: 5242880
+    backupCount: 5
+    encoding: utf8
+
+  evaluation_file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: detailed
+    filename: logs/evaluation.log
+    maxBytes: 5242880
+    backupCount: 5
+    encoding: utf8
+
+  api_file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: detailed
+    filename: logs/api.log
+    maxBytes: 5242880
+    backupCount: 5
+    encoding: utf8
+
+  error_file:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: detailed
+    filename: logs/error.log
+    maxBytes: 5242880
+    backupCount: 5
+    encoding: utf8
+
+# ============================================================
+# Loggers
+# ============================================================
+
+loggers:
+  financial_portfolio:
+    level: INFO
+    handlers:
+      - console
+      - app_file
+      - error_file
+    propagate: false
+
+  training:
+    level: INFO
+    handlers:
+      - console
+      - training_file
+      - error_file
+    propagate: false
+
+  evaluation:
+    level: INFO
+    handlers:
+      - console
+      - evaluation_file
+      - error_file
+    propagate: false
+
+  api:
+    level: INFO
+    handlers:
+      - console
+      - api_file
+      - error_file
+    propagate: false
+
+  uvicorn:
+    level: INFO
+    handlers:
+      - console
+      - api_file
+    propagate: false
+
+  uvicorn.error:
+    level: INFO
+    handlers:
+      - console
+      - api_file
+      - error_file
+    propagate: false
+
+  uvicorn.access:
+    level: INFO
+    handlers:
+      - console
+      - api_file
+    propagate: false
+
+# ============================================================
+# Root Logger
+# ============================================================
+
+root:
+  level: INFO
+  handlers:
+    - console
+    - app_file
+    - error_file
