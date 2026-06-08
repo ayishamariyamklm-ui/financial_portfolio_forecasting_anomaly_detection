@@ -1,0 +1,535 @@
+# ==============================================================================
+# Monitoring Configuration
+# Financial Portfolio Forecasting & Anomaly Detection
+# ==============================================================================
+
+project:
+  name: "Financial Portfolio Forecasting & Anomaly Detection"
+  version: "1.0.0"
+  environment: "development"
+  owner: "Ayisha Mariyam"
+  description: "Monitoring configuration for model performance, data drift, API health, logs, alerts, and dashboard tracking."
+
+# ==============================================================================
+# Directory Paths
+# ==============================================================================
+
+paths:
+  project_root: "."
+  monitoring_dir: "monitoring"
+  logs_dir: "monitoring/logs"
+  reports_dir: "reports"
+  tables_dir: "reports/tables"
+  figures_dir: "reports/figures"
+  outputs_dir: "outputs"
+  models_dir: "models"
+
+  app_log_file: "monitoring/logs/app.log"
+  training_log_file: "monitoring/logs/training.log"
+  inference_log_file: "monitoring/logs/inference.log"
+  api_log_file: "monitoring/logs/api.log"
+  dashboard_log_file: "monitoring/logs/dashboard.log"
+  error_log_file: "monitoring/logs/errors.log"
+
+  performance_metrics_file: "monitoring/performance_metrics.csv"
+  drift_report_file: "monitoring/drift_report.csv"
+  monitoring_summary_file: "monitoring/monitoring_summary.json"
+
+# ==============================================================================
+# Logging Configuration
+# ==============================================================================
+
+logging:
+  enabled: true
+  log_level: "INFO"
+
+  format: "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+  log_to_console: true
+  log_to_file: true
+
+  rotation:
+    enabled: true
+    max_bytes: 5242880
+    backup_count: 5
+
+  files:
+    app: "monitoring/logs/app.log"
+    training: "monitoring/logs/training.log"
+    inference: "monitoring/logs/inference.log"
+    api: "monitoring/logs/api.log"
+    dashboard: "monitoring/logs/dashboard.log"
+    errors: "monitoring/logs/errors.log"
+
+# ==============================================================================
+# Data Monitoring Configuration
+# ==============================================================================
+
+data_monitoring:
+  enabled: true
+
+  dataset:
+    raw_data_path: "data/raw/financial_portfolio_data.csv"
+    processed_data_path: "data/processed/cleaned_financial_data.csv"
+
+  required_columns:
+    - "date"
+    - "asset"
+    - "price"
+
+  column_types:
+    date: "datetime"
+    asset: "object"
+    price: "numeric"
+
+  validation_rules:
+    check_missing_values: true
+    check_duplicate_rows: true
+    check_negative_prices: true
+    check_invalid_dates: true
+    check_empty_dataset: true
+    check_required_columns: true
+
+  thresholds:
+    max_missing_percentage: 5.0
+    max_duplicate_percentage: 2.0
+    max_negative_price_count: 0
+    min_required_records: 10
+    min_assets_required: 1
+
+  alerts:
+    missing_columns: true
+    high_missing_values: true
+    duplicate_rows: true
+    negative_prices: true
+    empty_dataset: true
+
+# ==============================================================================
+# Forecasting Model Monitoring
+# ==============================================================================
+
+forecasting_monitoring:
+  enabled: true
+
+  models:
+    - "ARIMA"
+    - "XGBoost"
+    - "Prophet"
+    - "LSTM"
+
+  model_artifacts:
+    arima: "models/arima_models.pkl"
+    xgboost: "models/xgboost_model.pkl"
+    prophet: "models/prophet_models.pkl"
+    lstm_model_dir: "models/lstm_models"
+    lstm_scaler: "models/lstm_scalers.pkl"
+
+  prediction_outputs:
+    arima: "outputs/arima_forecast_results.csv"
+    xgboost: "outputs/xgboost_forecast_results.csv"
+    prophet: "outputs/prophet_forecast_results.csv"
+    lstm: "outputs/lstm_forecast_results.csv"
+    inference: "outputs/inference_forecasts.csv"
+    api: "outputs/api_forecast_results.csv"
+
+  metrics:
+    - "mae"
+    - "mse"
+    - "rmse"
+    - "mape"
+    - "smape"
+    - "r2_score"
+
+  primary_metric: "rmse"
+  lower_is_better:
+    mae: true
+    mse: true
+    rmse: true
+    mape: true
+    smape: true
+    r2_score: false
+
+  thresholds:
+    max_rmse: 50.0
+    max_mae: 30.0
+    max_mape: 25.0
+    min_r2_score: 0.50
+
+  alerts:
+    high_rmse: true
+    high_mae: true
+    high_mape: true
+    low_r2_score: true
+    missing_model_artifact: true
+    missing_prediction_output: true
+
+# ==============================================================================
+# Anomaly Detection Monitoring
+# ==============================================================================
+
+anomaly_monitoring:
+  enabled: true
+
+  methods:
+    - "IQR"
+    - "Z-Score"
+    - "Isolation Forest"
+
+  model_artifact: "models/anomaly_detection_model.pkl"
+
+  result_outputs:
+    notebook_results: "outputs/04_anomaly_detection_results.csv"
+    full_notebook_results: "outputs/04_full_anomaly_detection_results.csv"
+    training_results: "outputs/anomaly_detection_results.csv"
+    inference_results: "outputs/inference_anomaly_results.csv"
+    api_results: "outputs/api_anomaly_results.csv"
+
+  required_output_columns:
+    - "date"
+    - "asset"
+    - "price"
+    - "is_anomaly"
+    - "anomaly_method"
+    - "anomaly_severity"
+
+  thresholds:
+    max_anomaly_rate_percent: 20.0
+    high_severity_alert_count: 5
+    max_anomaly_count_per_asset: 50
+    isolation_forest_contamination: 0.05
+
+  severity_levels:
+    normal: 0
+    low: 1
+    medium: 2
+    high: 3
+
+  alerts:
+    high_anomaly_rate: true
+    high_severity_anomalies: true
+    missing_anomaly_output: true
+    missing_anomaly_model: true
+    asset_with_many_anomalies: true
+
+# ==============================================================================
+# Data Drift Detection
+# ==============================================================================
+
+drift_detection:
+  enabled: true
+
+  reference_data_path: "data/processed/train_data.csv"
+  current_data_path: "data/processed/test_data.csv"
+
+  drift_report_path: "monitoring/drift_report.csv"
+
+  monitored_columns:
+    - "price"
+    - "daily_return"
+    - "price_lag_1"
+    - "price_rolling_mean_7"
+    - "price_rolling_std_7"
+
+  statistical_tests:
+    numeric:
+      method: "ks_test"
+      p_value_threshold: 0.05
+
+    categorical:
+      method: "chi_square"
+      p_value_threshold: 0.05
+
+  thresholds:
+    max_mean_shift_percent: 20.0
+    max_std_shift_percent: 30.0
+    max_missing_shift_percent: 10.0
+    drift_score_threshold: 0.30
+
+  alerts:
+    numeric_drift_detected: true
+    categorical_drift_detected: true
+    price_distribution_shift: true
+    return_distribution_shift: true
+
+# ==============================================================================
+# Performance Tracking
+# ==============================================================================
+
+performance_tracking:
+  enabled: true
+
+  output_file: "monitoring/performance_metrics.csv"
+  summary_file: "monitoring/performance_summary.json"
+
+  track:
+    execution_time: true
+    memory_usage: true
+    cpu_usage: false
+    record_count: true
+    success_status: true
+    error_message: true
+
+  monitored_steps:
+    - "data_loading"
+    - "data_cleaning"
+    - "feature_engineering"
+    - "train_arima"
+    - "train_xgboost"
+    - "train_prophet"
+    - "train_lstm"
+    - "train_anomaly_detector"
+    - "model_evaluation"
+    - "forecast_inference"
+    - "anomaly_inference"
+    - "api_request"
+    - "dashboard_load"
+
+  thresholds:
+    max_data_pipeline_time_seconds: 120
+    max_model_training_time_seconds: 1800
+    max_inference_time_seconds: 60
+    max_api_response_time_seconds: 10
+    max_dashboard_load_time_seconds: 15
+
+  alerts:
+    slow_pipeline: true
+    slow_training: true
+    slow_inference: true
+    slow_api_response: true
+    failed_step: true
+
+# ==============================================================================
+# API Monitoring
+# ==============================================================================
+
+api_monitoring:
+  enabled: true
+
+  service:
+    host: "127.0.0.1"
+    port: 8000
+    docs_url: "http://127.0.0.1:8000/docs"
+    health_url: "http://127.0.0.1:8000/health/full"
+
+  endpoints:
+    root: "/"
+    health: "/health/"
+    full_health: "/health/full"
+    model_status: "/models/status"
+    forecast: "/forecast"
+    anomaly: "/anomaly"
+    predict: "/predict"
+    forecast_default: "/forecast/default"
+    anomaly_default: "/anomaly/default"
+    upload_predict: "/upload/predict"
+
+  thresholds:
+    max_response_time_seconds: 10
+    max_error_rate_percent: 5.0
+    min_success_rate_percent: 95.0
+
+  alerts:
+    api_down: true
+    slow_response: true
+    high_error_rate: true
+    failed_prediction_request: true
+
+# ==============================================================================
+# Dashboard Monitoring
+# ==============================================================================
+
+dashboard_monitoring:
+  enabled: true
+
+  service:
+    host: "localhost"
+    port: 8501
+    url: "http://localhost:8501"
+
+  pages:
+    - "Overview"
+    - "Dataset"
+    - "Forecasting"
+    - "Anomaly Detection"
+    - "Model Health"
+    - "Downloads"
+
+  required_files:
+    dashboard_app: "dashboard/app.py"
+    portfolio_overview_page: "dashboard/pages/1_portfolio_overview.py"
+    price_forecasting_page: "dashboard/pages/2_price_forecasting.py"
+    anomaly_detection_page: "dashboard/pages/3_anomaly_detection.py"
+    model_performance_page: "dashboard/pages/4_model_performance.py"
+
+  thresholds:
+    max_load_time_seconds: 15
+    max_chart_render_time_seconds: 10
+
+  alerts:
+    dashboard_down: true
+    missing_dashboard_file: true
+    missing_dashboard_output_data: true
+    slow_dashboard_load: true
+
+# ==============================================================================
+# Alert Configuration
+# ==============================================================================
+
+alerts:
+  enabled: true
+
+  channels:
+    console: true
+    log_file: true
+    email: false
+    slack: false
+
+  severity_levels:
+    info: true
+    warning: true
+    error: true
+    critical: true
+
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender_email: ""
+    receiver_email: ""
+    use_tls: true
+
+  slack:
+    enabled: false
+    webhook_url: ""
+
+  alert_log_file: "monitoring/logs/alerts.log"
+
+  rules:
+    data_quality_failed:
+      enabled: true
+      severity: "error"
+      message: "Data quality validation failed."
+
+    model_performance_degraded:
+      enabled: true
+      severity: "warning"
+      message: "Forecasting model performance is below threshold."
+
+    drift_detected:
+      enabled: true
+      severity: "warning"
+      message: "Data drift detected in monitored features."
+
+    anomaly_rate_high:
+      enabled: true
+      severity: "warning"
+      message: "Anomaly rate is higher than expected."
+
+    api_unavailable:
+      enabled: true
+      severity: "critical"
+      message: "API service is unavailable."
+
+    dashboard_unavailable:
+      enabled: true
+      severity: "warning"
+      message: "Dashboard service is unavailable."
+
+# ==============================================================================
+# Report Generation
+# ==============================================================================
+
+reports:
+  enabled: true
+
+  output_dir: "monitoring/reports"
+
+  files:
+    daily_monitoring_report: "monitoring/reports/daily_monitoring_report.md"
+    weekly_monitoring_report: "monitoring/reports/weekly_monitoring_report.md"
+    drift_report: "monitoring/reports/drift_report.md"
+    model_performance_report: "monitoring/reports/model_performance_report.md"
+    anomaly_monitoring_report: "monitoring/reports/anomaly_monitoring_report.md"
+
+  include_sections:
+    data_quality: true
+    forecasting_performance: true
+    anomaly_summary: true
+    drift_detection: true
+    api_health: true
+    dashboard_health: true
+    alerts: true
+    recommendations: true
+
+# ==============================================================================
+# Scheduler Configuration
+# ==============================================================================
+
+scheduler:
+  enabled: false
+
+  timezone: "Asia/Kolkata"
+
+  jobs:
+    data_quality_check:
+      enabled: true
+      frequency: "daily"
+      time: "09:00"
+
+    drift_detection:
+      enabled: true
+      frequency: "daily"
+      time: "09:30"
+
+    model_performance_check:
+      enabled: true
+      frequency: "daily"
+      time: "10:00"
+
+    anomaly_monitoring:
+      enabled: true
+      frequency: "daily"
+      time: "10:30"
+
+    full_monitoring_report:
+      enabled: true
+      frequency: "weekly"
+      day: "monday"
+      time: "11:00"
+
+# ==============================================================================
+# Development Settings
+# ==============================================================================
+
+development:
+  debug_mode: true
+  save_intermediate_outputs: true
+  verbose_logging: true
+  fail_fast: false
+
+  test_mode:
+    enabled: false
+    sample_size: 100
+    skip_lstm_training: true
+    skip_prophet_training: false
+
+# ==============================================================================
+# Production Settings
+# ==============================================================================
+
+production:
+  debug_mode: false
+  save_intermediate_outputs: false
+  verbose_logging: false
+  fail_fast: true
+
+  model_retraining:
+    enabled: false
+    frequency: "monthly"
+    min_new_records: 100
+
+  backup:
+    enabled: true
+    backup_dir: "monitoring/backups"
+    keep_last_n_backups: 5
