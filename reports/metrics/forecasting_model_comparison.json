@@ -1,0 +1,58 @@
+[
+    {
+        "model_name": "ARIMA",
+        "status": "success",
+        "mae": 151.993466,
+        "mse": 32760.560177,
+        "rmse": 177.232146,
+        "mape": 72.172338,
+        "r2_score": -1.355513,
+        "trained_asset_count": 5,
+        "trained_assets": "Bond A, Bond B, Commodity A, Stock A, Stock B",
+        "forecast_rows": 150,
+        "training_time_seconds": null,
+        "error_message": null
+    },
+    {
+        "model_name": "XGBoost",
+        "status": "success",
+        "mae": 29.615809,
+        "mse": 1620.766791,
+        "rmse": 40.258748,
+        "mape": 14.915182,
+        "r2_score": 0.916421,
+        "trained_asset_count": 5,
+        "trained_assets": "Bond A, Bond B, Commodity A, Stock A, Stock B",
+        "forecast_rows": 150,
+        "training_time_seconds": null,
+        "error_message": null
+    },
+    {
+        "model_name": "Prophet",
+        "status": "success",
+        "mae": 2141.77777,
+        "mse": 15812137.014209,
+        "rmse": 2976.625282,
+        "mape": 821.854907,
+        "r2_score": -766.868249,
+        "trained_asset_count": 5,
+        "trained_assets": "Bond A, Bond B, Commodity A, Stock A, Stock B",
+        "forecast_rows": 150,
+        "training_time_seconds": null,
+        "error_message": null
+    },
+    {
+        "model_name": "LSTM",
+        "status": "success",
+        "mae": 85.379319,
+        "mse": 11860.42551,
+        "rmse": 108.569306,
+        "mape": 52.257036,
+        "r2_score": 0.170446,
+        "trained_asset_count": 5,
+        "trained_assets": "Bond A, Bond B, Commodity A, Stock A, Stock B",
+        "forecast_rows": 150,
+        "training_time_seconds": null,
+        "error_message": null
+    }
+]

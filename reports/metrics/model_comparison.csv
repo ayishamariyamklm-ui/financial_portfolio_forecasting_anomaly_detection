@@ -1,0 +1,5 @@
+model_name,status,mae,mse,rmse,mape,smape,r2_score,trained_asset_count,trained_assets,metrics_file,rank
+XGBoost,available,29.615809,1620.766791,40.258748,14.915182,,0.916421,1,,E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\xgboost_metrics.json,1.0
+LSTM,available,85.379319,11860.42551,108.569306,52.257036,,0.170446,5,"Bond A, Bond B, Commodity A, Stock A, Stock B",E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\lstm_metrics.json,2.0
+ARIMA,available,151.993466,32760.560177,177.232146,72.172338,,-1.355513,5,"Bond A, Bond B, Commodity A, Stock A, Stock B",E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\arima_metrics.json,3.0
+Prophet,available,2141.77777,15812137.014209,2976.625282,821.854907,,-766.868249,5,"Bond A, Bond B, Commodity A, Stock A, Stock B",E:\VS CODE\The Developer's Arena Internship 6 months\Month 5\financial_portfolio_forecasting_anomaly_detection\reports\tables\prophet_metrics.json,4.0
