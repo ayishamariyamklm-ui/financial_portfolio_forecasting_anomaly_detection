@@ -1,0 +1,253 @@
+# ============================================================
+# Financial Portfolio Forecasting & Anomaly Detection
+# .gitignore
+# ============================================================
+
+
+# ============================================================
+# Python cache files
+# ============================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+
+# ============================================================
+# Virtual environments
+# ============================================================
+
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+python_env/
+
+
+# ============================================================
+# Environment variables and secrets
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+secrets/
+*.key
+*.pem
+
+
+# ============================================================
+# Jupyter Notebook checkpoints
+# ============================================================
+
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+
+# ============================================================
+# Data files
+# Keep folder structure, ignore large/private datasets
+# ============================================================
+
+data/raw/*
+data/processed/*
+data/interim/*
+data/external/*
+data/sample/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/interim/.gitkeep
+!data/external/.gitkeep
+!data/sample/.gitkeep
+
+# Optional: allow small sample input files if needed
+!data/sample/sample_prediction_input.csv
+
+
+# ============================================================
+# Model files and trained artifacts
+# ============================================================
+
+models/*
+!models/.gitkeep
+
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.keras
+*.pt
+*.pth
+*.onnx
+
+
+# ============================================================
+# Output files
+# ============================================================
+
+outputs/*
+reports/figures/*
+reports/tables/*
+reports/predictions/*
+
+!outputs/.gitkeep
+!reports/figures/.gitkeep
+!reports/tables/.gitkeep
+!reports/predictions/.gitkeep
+
+
+# ============================================================
+# Logs
+# ============================================================
+
+logs/*
+*.log
+
+*.log
+!monitoring/logs/.gitkeep
+
+
+# ============================================================
+# MLflow / experiment tracking
+# ============================================================
+
+mlruns/
+mlartifacts/
+wandb/
+lightning_logs/
+
+
+# ============================================================
+# Streamlit
+# ============================================================
+
+.streamlit/secrets.toml
+
+
+# ============================================================
+# FastAPI / Flask / local app runtime
+# ============================================================
+
+instance/
+.webassets-cache/
+
+
+# ============================================================
+# Test and coverage files
+# ============================================================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+
+# ============================================================
+# Build and packaging files
+# ============================================================
+
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+
+# ============================================================
+# IDE and editor files
+# ============================================================
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+
+# ============================================================
+# OS generated files
+# ============================================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+
+# ============================================================
+# Temporary files
+# ============================================================
+
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.old
+
+
+# ============================================================
+# CSV / Excel temporary files
+# ============================================================
+
+~$*.xlsx
+~$*.xls
+*.xlsb
+
+
+# ============================================================
+# Docker
+# ============================================================
+
+.docker/
+docker-compose.override.yml
+
+
+# ============================================================
+# Database files
+# ============================================================
+
+*.db
+*.sqlite
+*.sqlite3
+
+
+# ============================================================
+# Financial API exports / sensitive downloads
+# ============================================================
+
+*.parquet
+*.feather
+*.avro
+*.orc
+
+
+# ============================================================
+# Keep important documentation tracked
+# ============================================================
+
+!README.md
+!requirements.txt
+!setup.py
+!Dockerfile
+!docker-compose.yml
+!.env.example
