@@ -1,0 +1,93 @@
+# ==============================================================================
+# Render Deployment Blueprint
+# Financial Portfolio Forecasting & Anomaly Detection
+# ==============================================================================
+
+services:
+  # --------------------------------------------------------------------------
+  # FastAPI Backend Service
+  # --------------------------------------------------------------------------
+  - type: web
+    name: financial-portfolio-api
+    runtime: python
+    plan: free
+    region: oregon
+
+    # Build command
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+
+    # Start command for FastAPI
+    # Render provides the PORT environment variable automatically.
+    # The app object is inside api/main.py as app.
+    startCommand: |
+      uvicorn api.main:app --host 0.0.0.0 --port $PORT
+
+    # Auto deploy when pushing to the selected branch
+    autoDeploy: true
+
+    # Health check endpoint
+    healthCheckPath: /health/
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+      - key: ENVIRONMENT
+        value: production
+
+      - key: PROJECT_NAME
+        value: financial-portfolio-forecasting-anomaly-detection
+
+      - key: APP_MODULE
+        value: api.main:app
+
+      - key: LOG_LEVEL
+        value: INFO
+
+      - key: DATA_PATH
+        value: data/raw/financial_portfolio_data.csv
+
+      - key: MODEL_DIR
+        value: models
+
+      - key: OUTPUT_DIR
+        value: outputs
+
+      - key: REPORTS_DIR
+        value: reports
+
+      - key: MONITORING_DIR
+        value: monitoring
+
+  # --------------------------------------------------------------------------
+  # Optional Streamlit Dashboard Service
+  # --------------------------------------------------------------------------
+  - type: web
+    name: financial-portfolio-dashboard
+    runtime: python
+    plan: free
+    region: oregon
+
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+
+    startCommand: |
+      streamlit run dashboard/app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --browser.gatherUsageStats false
+
+    autoDeploy: true
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+      - key: ENVIRONMENT
+        value: production
+
+      - key: PROJECT_NAME
+        value: financial-portfolio-dashboard
+
+      - key: LOG_LEVEL
+        value: INFO
